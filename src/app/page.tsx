@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import AppWelcome from "./components/AppWelcome";
 
 export default function Home() {
