@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <h1>Home Page</h1>
       <hr/>
-      <AppWelcome/>
+      <AppWelcome handTitle="SWU" isShow={true}/>
       </>
   );
 }
