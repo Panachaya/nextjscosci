@@ -25,6 +25,12 @@ export const NavMenu = (props: NavigationMenuProps) => (
           <Link href="/about">เกี่ยวกับเรา</Link>
         </NavigationMenuLink>
       </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuLink asChild>
+          <Link href="/course">คอร์ส</Link>
+        </NavigationMenuLink>
+      </NavigationMenuItem>
     </NavigationMenuList>
   </NavigationMenu>
+  
 );
