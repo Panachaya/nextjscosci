@@ -23,6 +23,8 @@ export default function RootLayout({
       <body
         className= {`${k2D.className}`}
       >
+        <h1>Header</h1>
+        <hr />
         {children}
       </body>
     </html>
