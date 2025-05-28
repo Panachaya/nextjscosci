@@ -72,7 +72,7 @@ const footerSections = [
 
 const Footer03Page = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex flex-col">
       <div className="grow bg-muted" />
       <footer>
         <div className="max-w-screen-xl mx-auto">
