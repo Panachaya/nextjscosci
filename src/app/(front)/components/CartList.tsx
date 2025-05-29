@@ -58,6 +58,7 @@ export default function CartList() {
           <div className="m-4">
             <Button className="mr-4" variant="outline" onClick={() => {clearCart();}}>ลบสินค้าทั้งหมด</Button>
             <Button onClick={() => {
+              clearCart();
               router.replace('/product');
             }}>ยืนยันการสั่งซื้อ</Button>
           </div>
