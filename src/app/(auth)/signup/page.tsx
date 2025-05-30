@@ -19,7 +19,8 @@ import { authClient } from "@/lib/auth-client"; //import the auth client
 import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
-  email: z.string().email("รูปแบบอีเมลล์ไม่ถูกต้อง"),
+  name:z.string().min(1, "ชื่อ-นามสกุล ห้ามว่าง"),
+  email:z.string().email("รูปแบบอีเมลล์ไม่ถูกต้อง"),
   password: z.string().min(6, "รหัสผ่านต้องอย่างน้อย 6 ตัวอักษร"),
 });
 
@@ -27,6 +28,7 @@ const Signup01Page = () => {
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
+      name: "",
       email: "",
       password: "",
     },
@@ -35,9 +37,9 @@ const Signup01Page = () => {
 
   const onSubmit = async (form: z.infer<typeof formSchema>) => {
     await authClient.signUp.email({
-      name:"Your Name",
-        email: form.email, // user email address
-        password: form.password, // user password -> min 6 characters by default
+      name: form.name,
+        email: form.email, 
+        password: form.password, 
     }, {
         onRequest: (ctx) => {
             //show loading
@@ -46,7 +48,7 @@ const Signup01Page = () => {
         onSuccess: (ctx) => {
             //redirect to the dashboard or sign in page
             console.log(ctx.data)
-            router.replace('/login');
+            router.replace('/');
         },
         onError: (ctx) => {
             // display the error message
@@ -67,6 +69,25 @@ const Signup01Page = () => {
             className="w-full space-y-4"
             onSubmit={form.handleSubmit(onSubmit)}
           >
+
+          <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>name</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      placeholder="Your Name"
+                      className="w-full"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+              />
             <FormField
               control={form.control}
               name="email"
